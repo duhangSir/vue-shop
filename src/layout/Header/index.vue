@@ -16,8 +16,11 @@
       </div>
 
       <el-tooltip content="全屏">
-        <el-icon @click="fullScreen" class="collapse fullscreen"
+        <el-icon v-if="!screen" @click="fullScreen" class="collapse fullscreen"
           ><FullScreen
+        /></el-icon>
+        <el-icon v-else @click="fullScreen" class="collapse fullscreen"
+          ><Aim
         /></el-icon>
       </el-tooltip>
       <div class="header-right">
@@ -42,12 +45,12 @@
 </template>
 <script setup>
 // import svgIcon from '@/components/plugins/svgIcon.vue'
-import { computed, reactive } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 const store = useStore()
 const router = useRouter()
-let screen = reactive(false)
+const screen = ref(false)
 const menu = computed(() => {
   return store.getters.userInfo
 })
@@ -66,11 +69,11 @@ const setcollapse = () => {
 }
 // 点击全屏
 const fullScreen = () => {
-  if (!screen) {
-    screen = true
+  if (!screen.value) {
+    screen.value = true
     document.documentElement.webkitRequestFullscreen()
   } else {
-    screen = false
+    screen.value = false
     document.webkitExitFullscreen()
   }
 }

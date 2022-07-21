@@ -13,7 +13,6 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         const res = await store.dispatch('user/setUserInfo')
-        console.log(res)
         if (res) {
           const menus = filterMenus(store.getters.userInfo.menus)
           console.log(menus)

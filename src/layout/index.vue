@@ -29,6 +29,7 @@ const collapse = computed(() => {
 .el-main {
   height: calc(100vh - 65px);
   background-color: #f3f4f6;
+  padding: 0;
 }
 .el-header {
   height: 65px;

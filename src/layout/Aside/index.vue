@@ -5,6 +5,7 @@
       unique-opened
       router
       :collapse="isCollapse"
+      :collapse-transition=false
       class="el-menu-vertical-demo"
     >
       <menuList
@@ -26,6 +27,5 @@ const list = computed(() => {
 const isCollapse = computed(() => {
   return store.getters.iscollapse
 })
-console.log(list)
 </script>
 <style scoped lang="scss"></style>
